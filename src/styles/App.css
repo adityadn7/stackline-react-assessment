@@ -75,10 +75,16 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.sales-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1%;
+}
+
 .sales-table {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
 }
 
 .sales-table th {

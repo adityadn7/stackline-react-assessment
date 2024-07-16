@@ -11,32 +11,26 @@ const App: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/stackline_frontend_assessment_data_2021.json');
-                console.log('Response status:', response.status); // Check response status
-
+                const url = 'https://api.jsonbin.io/v3/b/669671a9ad19ca34f8887642'; // publicly accessible URL
+                const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
-
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.includes('application/json')) {
-                    const data = await response.json();
-                    console.log('Fetched data:', data); // Check fetched data
-                    if (data && Array.isArray(data) && data.length > 0) {
-                        setProduct(data[0]); // There is only one product in the array
-                    } else {
-                        throw new Error('Product data not found in JSON');
-                    }
+                const responseData = await response.json();
+                const data = responseData.record; // Access the 'record' array
+                if (data && Array.isArray(data) && data.length > 0) {
+                    setProduct(data[0]); // Assuming there's only one product, set the first item
                 } else {
-                    throw new Error('Response was not JSON');
+                    throw new Error('Product data not found in JSON');
                 }
             } catch (error) {
-                console.error('Error fetching product data:', error);
+                setProduct(null); // Set product state to null or handle error state
             }
         };
 
         fetchData();
     }, []);
+
 
 
   return (
