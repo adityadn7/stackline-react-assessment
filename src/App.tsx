@@ -11,7 +11,7 @@ const App: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('./stackline_frontend_assessment_data_2021.json');
+                const response = await fetch('/stackline_frontend_assessment_data_2021.json');
                 console.log('Response status:', response.status); // Check response status
 
                 if (!response.ok) {
